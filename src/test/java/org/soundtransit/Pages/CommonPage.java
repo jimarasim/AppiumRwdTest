@@ -1,7 +1,10 @@
 package org.soundtransit.Pages;
 
+import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.soundtransit.Base.BasePage;
 
 import java.util.ArrayList;
@@ -16,6 +19,8 @@ public class CommonPage extends BasePage {
      * @return Old tab window handle
      */
     public String switchToNewTab() {
+        (new WebDriverWait(driver,10)).until(ExpectedConditions.numberOfWindowsToBe(2));
+
         String oldTab = driver.getWindowHandle();
         String newTab = "";
 
@@ -46,9 +51,16 @@ public class CommonPage extends BasePage {
      * uses jquery to click an element provided by a selector
      * @param selector
      */
-    public void ClickWithJQuery(String selector) {
+    public void clickWithJQuery(String selector) {
         ((JavascriptExecutor) driver).executeScript("jQuery('"+selector+"').click();");
     }
 
+    /**
+     * This function waits for alert and accepts it
+     */
+    public void waitForAndAcceptAlert() {
+        (new WebDriverWait(driver,10)).until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert().accept();
+    }
 
 }

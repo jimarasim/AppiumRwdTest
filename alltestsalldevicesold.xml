@@ -74,4 +74,40 @@
 
     </test>
 
+    <test name="iPhone Safari Subscribe">
+
+        <parameter name="device" value="IPHONESAFARIOLD" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SubscribeTest" />
+
+        </classes>
+
+    </test>
+
+    <test name="Android Chrome Subscribe">
+
+        <parameter name="device" value="ANDROIDCHROME" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SubscribeTest" />
+
+        </classes>
+
+    </test>
+
+    <test name="Desktop Chrome Subscribe">
+
+        <parameter name="device" value="DESKTOPCHROME" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SubscribeTest" />
+
+        </classes>
+
+    </test>
+
 </suite>

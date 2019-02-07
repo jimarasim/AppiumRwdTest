@@ -37,6 +37,7 @@ public class BaseTest {
              * Install Carthage. Might have to use an old version of carthage if your os/xcode is old. Go to the site and download/install the pkg; otherwise, use brew install carthage
              * Use a device that is installed in xcode (see Device)
              * */
+            capabilities.setCapability("nativeWebTap",true); //normal button click doesn't work without this
             driver = new IOSDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         } else if (devicebrowser == Device.ANDROIDCHROME) {
         /*ANDROID NOTES

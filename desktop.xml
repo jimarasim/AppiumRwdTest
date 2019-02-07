@@ -26,4 +26,16 @@
 
     </test>
 
+    <test name="Desktop Chrome Subscribe">
+
+        <parameter name="device" value="DESKTOPCHROME" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SubscribeTest" />
+
+        </classes>
+
+    </test>
+
 </suite>

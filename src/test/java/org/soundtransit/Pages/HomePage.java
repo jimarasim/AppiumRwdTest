@@ -93,7 +93,6 @@ public class HomePage extends BasePage {
     }
 
     public void clickSubscribeButton() {
-        subscribeButton.sendKeys(Keys.ENTER);
         subscribeButton.click();
     }
 
