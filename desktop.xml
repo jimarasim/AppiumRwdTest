@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="desktop" parallel="tests" thread-count="2">
+
+    <test name="Desktop Chrome Search">
+
+        <parameter name="device" value="DESKTOPCHROME" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SearchTest" />
+
+        </classes>
+
+    </test>
+
+    <test name="Desktop Chrome Real Time">
+
+        <parameter name="device" value="DESKTOPCHROME" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.RealTimeArrivalsTest" />
+
+        </classes>
+
+    </test>
+
+</suite>
