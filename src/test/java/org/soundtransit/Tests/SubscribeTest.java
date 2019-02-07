@@ -31,13 +31,11 @@ public class SubscribeTest extends BaseTest {
         if(driver instanceof IOSDriver) {
             commonPage.waitForAndAcceptAlert();
 
-            Set<String> contextView = ((AppiumDriver)driver).getContextHandles();
-            ArrayList<String> s = new ArrayList<String>(contextView);
-            ((AppiumDriver)driver).context(s.get(contextView.size()-1));
+            String oldContext = commonPage.switchToNewContext();
 
             Assert.assertEquals(driver.getCurrentUrl(), "https://public.govdelivery.com/accounts/WASOUND/subscribers/qualify?qsp=CODE_RED&country_code=1&subscription_type=email&email=example%40website.com");
 
-            driver.close();
+            commonPage.closeCurrentContext();
         } else {
 
             String oldTab = commonPage.switchToNewTab();

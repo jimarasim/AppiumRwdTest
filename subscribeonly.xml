@@ -1,0 +1,42 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="alltestsalldevices" parallel="none">
+
+    <test name="iPhone Safari Subscribe">
+
+        <parameter name="device" value="IPHONESAFARI" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SubscribeTest" />
+
+        </classes>
+
+    </test>
+
+    <test name="Android Chrome Subscribe">
+
+        <parameter name="device" value="ANDROIDCHROME" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SubscribeTest" />
+
+        </classes>
+
+    </test>
+
+    <test name="Desktop Chrome Subscribe">
+
+        <parameter name="device" value="DESKTOPCHROME" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SubscribeTest" />
+
+        </classes>
+
+    </test>
+
+
+</suite>

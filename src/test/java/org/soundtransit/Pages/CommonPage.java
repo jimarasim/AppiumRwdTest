@@ -1,5 +1,6 @@
 package org.soundtransit.Pages;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.soundtransit.Base.BasePage;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class CommonPage extends BasePage {
     public CommonPage(RemoteWebDriver driver) {
@@ -61,6 +63,31 @@ public class CommonPage extends BasePage {
     public void waitForAndAcceptAlert() {
         (new WebDriverWait(driver,10)).until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
+    }
+
+    /**
+     * This function switches to the newest context.
+     * Safari "tabs" are actually separate contexts.
+     */
+    public String switchToNewContext() throws Exception{
+        if(driver instanceof AppiumDriver) {
+            String oldContext = ((AppiumDriver) driver).getContext();
+
+            Set<String> contextView = ((AppiumDriver)driver).getContextHandles();
+            ArrayList<String> s = new ArrayList<String>(contextView);
+            ((AppiumDriver)driver).context(s.get(contextView.size()-1));
+
+            return oldContext;
+        } else {
+            throw new Exception("THIS IS NOT AN APPIUM DRIVER, YOU CAN'T USE THIS");
+        }
+    }
+
+    /**
+     * Closes the current context
+     */
+    public void closeCurrentContext() {
+        driver.close();
     }
 
 }
