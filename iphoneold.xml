@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="desktop" parallel="tests" thread-count="3">
+<suite name="iphoneold" parallel="none">
 
-    <test name="Desktop Chrome Search">
+    <test name="IPHONESAFARIOLD Search">
 
-        <parameter name="device" value="DESKTOPCHROME" />
+        <parameter name="device" value="IPHONESAFARIOLD" />
 
         <classes>
 
@@ -14,9 +14,9 @@
 
     </test>
 
-    <test name="Desktop Chrome Real Time">
+    <test name="IPHONESAFARIOLD Real Time">
 
-        <parameter name="device" value="DESKTOPCHROME" />
+        <parameter name="device" value="IPHONESAFARIOLD" />
 
         <classes>
 
@@ -26,9 +26,9 @@
 
     </test>
 
-    <test name="Desktop Chrome Subscribe">
+    <test name="IPHONESAFARIOLD Subscribe">
 
-        <parameter name="device" value="DESKTOPCHROME" />
+        <parameter name="device" value="IPHONESAFARIOLD" />
 
         <classes>
 

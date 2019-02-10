@@ -1,10 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="desktop" parallel="tests" thread-count="3">
+<suite name="android" parallel="none">
 
-    <test name="Desktop Chrome Search">
+    <test name="ANDROIDCHROME Search">
 
-        <parameter name="device" value="DESKTOPCHROME" />
+        <parameter name="device" value="ANDROIDCHROME" />
 
         <classes>
 
@@ -14,9 +14,9 @@
 
     </test>
 
-    <test name="Desktop Chrome Real Time">
+    <test name="ANDROIDCHROME Real Time">
 
-        <parameter name="device" value="DESKTOPCHROME" />
+        <parameter name="device" value="ANDROIDCHROME" />
 
         <classes>
 
@@ -26,9 +26,9 @@
 
     </test>
 
-    <test name="Desktop Chrome Subscribe">
+    <test name="ANDROIDCHROME Subscribe">
 
-        <parameter name="device" value="DESKTOPCHROME" />
+        <parameter name="device" value="ANDROIDCHROME" />
 
         <classes>
 
