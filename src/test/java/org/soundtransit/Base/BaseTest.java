@@ -31,6 +31,21 @@ public class BaseTest {
         capabilities.setCapability("deviceName", devicebrowser.deviceName);
         capabilities.setCapability("browserName", devicebrowser.browserName);
 
+        /* REAL DEVICE NOTES
+            brew install libimobiledevice --HEAD
+            npm install -g ios-deploy
+            https://github.com/appium/appium-xcuitest-driver/blob/master/docs/real-device-config.md
+            install ios_webkit_debug_proxy (IWDP) http://appium.io/docs/en/writing-running-appium/web/mobile-web/
+            settings > safari > advanced > web inspector on
+         */
+        if(devicebrowser == Device.IPHONESAFARIREAL) {
+            capabilities.setCapability("udid",devicebrowser.udid);
+            //capabilities.setCapability("xcodeOrgId", "<team id in developer site > membership>");
+            //capabilities.setCapability("xcodeSigningId", "iPhone Developer");
+            capabilities.setCapability("startIWDP", true);
+            capabilities.setCapability("automationName", "XCUITest");
+        }
+
         if(devicebrowser.toString().contains("IPHONE")) {
             /*SAFARI NOTES
              * Download Xcode
