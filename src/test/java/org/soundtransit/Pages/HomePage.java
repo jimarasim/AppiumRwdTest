@@ -1,14 +1,7 @@
 package org.soundtransit.Pages;
 
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -40,6 +33,17 @@ public class HomePage extends BasePage {
     @FindBy(id="service-alerts-subscription-form")
     WebElement subscribeForm;
 
+    @FindBy(id="arrivalsRiderTab2")
+    WebElement tripPlanningTab;
+
+    @FindBy(id="tripDepart1")
+    WebElement tripPlanningDepartTextBox;
+
+    @FindBy(id="tripGoing1")
+    WebElement tripPlanningGoingTextBox;
+
+    @FindBy(xpath="//button[@data-role='trip-planning']")
+    WebElement tripPlanningPlanYourTripButton;
 
     public final String url = "https://www.soundtransit.org";
 
@@ -51,12 +55,14 @@ public class HomePage extends BasePage {
         driver.get(url);
     }
 
+    //MENU
     public void clickHomeButton() {
         homeButton.click();
 
         ((new WebDriverWait(driver,10))).until(ExpectedConditions.visibilityOf(searchTextBox));
     }
 
+    //GLOBAL SEARCH
     public SearchPage enterSearchTerm(String searchTerm) {
         searchTextBox.sendKeys(searchTerm);
         searchButton.click();
@@ -67,15 +73,9 @@ public class HomePage extends BasePage {
         return srp;
     }
 
+    //REAL TIME ARRIVALS
     public void enterRealTimeArrivalsAddress(String address){
         realTimeArrivalsTextBox.sendKeys(address);
-    }
-
-    public void selectRealTimeDropdownEntry(String address) {
-        String optionXpath = "//div[@class='option_name' and contains(text(),'"+address+"')]";
-        (new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath(optionXpath)));
-        WebElement option = driver.findElement(By.xpath(optionXpath));
-        option.click();
     }
 
     public RealTimeArrivalsPage clickRealTimeArrivalsButton() {
@@ -88,6 +88,33 @@ public class HomePage extends BasePage {
         return strtap;
     }
 
+    //TRIP PLANNING
+    public void selectTripPlanningTab() {
+        tripPlanningTab.click();
+        ((new WebDriverWait(driver,10))).until(ExpectedConditions.visibilityOf(tripPlanningDepartTextBox));
+    }
+
+    public void enterTripPlannerDepartAddress(String address) {
+        tripPlanningDepartTextBox.sendKeys(address);
+    }
+
+    public void enterTripPlannerGoingAddress(String address) {
+        tripPlanningGoingTextBox.sendKeys(address);
+    }
+
+    public TripPlanningPage clickPlanYourTripButton() {
+        TripPlanningPage tripPlanningPage = new TripPlanningPage(driver);
+
+        ((new WebDriverWait(driver,10))).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.form__typeaheadOption")));
+
+        tripPlanningPlanYourTripButton.click();
+
+        tripPlanningPage.waitForPage();
+
+        return tripPlanningPage;
+    }
+
+    //SUBSCRIBE
     public void enterSubscribeText(String text) {
         subscribeTextBox.sendKeys(text);
     }
@@ -95,6 +122,5 @@ public class HomePage extends BasePage {
     public void clickSubscribeButton() {
         subscribeButton.click();
     }
-
 
 }

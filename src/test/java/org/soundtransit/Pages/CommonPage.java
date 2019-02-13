@@ -1,8 +1,9 @@
 package org.soundtransit.Pages;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.ios.IOSDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 public class CommonPage extends BasePage {
+
     public CommonPage(RemoteWebDriver driver) {
         super(driver);
     }
@@ -84,10 +86,20 @@ public class CommonPage extends BasePage {
     }
 
     /**
-     * Closes the current context
+     * Closes the current context in safari
      */
     public void closeCurrentContext() {
         driver.close();
+    }
+
+    /**
+     * This function waits for the smart search option to appear, then selects it
+     * @param optionText
+     */
+    public void selectSmartSearchOption(String optionText) {
+        String optionXpath = "//div[@class='option_name' and contains(text(),'"+optionText+"')]";
+        WebElement option = (new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath(optionXpath)));
+        option.click();
     }
 
 }

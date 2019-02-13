@@ -1,6 +1,7 @@
 package org.soundtransit.Tests;
 
 import org.soundtransit.Base.BaseTest;
+import org.soundtransit.Pages.CommonPage;
 import org.soundtransit.Pages.HomePage;
 import org.soundtransit.Pages.RealTimeArrivalsPage;
 import org.testng.Assert;
@@ -16,7 +17,9 @@ public class RealTimeArrivalsTest extends BaseTest {
         homePage.navigate();
 
         homePage.enterRealTimeArrivalsAddress(address);
-        homePage.selectRealTimeDropdownEntry(address);
+
+        CommonPage commonPage = new CommonPage(driver);
+        commonPage.selectSmartSearchOption(address);
 
         RealTimeArrivalsPage strtap = homePage.clickRealTimeArrivalsButton();
         strtap.waitForRealTimeArrivalsResult();
