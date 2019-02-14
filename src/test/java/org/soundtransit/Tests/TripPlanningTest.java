@@ -4,14 +4,15 @@ import org.soundtransit.Base.BaseTest;
 import org.soundtransit.Pages.CommonPage;
 import org.soundtransit.Pages.HomePage;
 import org.soundtransit.Pages.TripPlanningPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TripPlanningTest extends BaseTest {
     @Test
-    public void tripPlannerAddresses() throws Exception {
+    public void tripPlannerLocations() throws Exception {
 
-        String depart = "401 S Jackson St, Seattle, WA 98104";
-        String going = "3504 SW Webster St, Seattle, WA 98126";
+        String depart = "Fremont Troll";
+        String going = "Seattle Center Pavillion";
 
         HomePage homePage = new HomePage(driver);
         homePage.navigate();
@@ -29,6 +30,6 @@ public class TripPlanningTest extends BaseTest {
         TripPlanningPage tripPlannerPage = homePage.clickPlanYourTripButton();
         tripPlannerPage.waitForTripPlan();
 
-//        Assert.assertEquals(strtap.getRealTimeArrivalsSearchResultsText(),address);
+        Assert.assertTrue(tripPlannerPage.getTripPlannerSteps().contains("Metro Transit"));
     }
 }

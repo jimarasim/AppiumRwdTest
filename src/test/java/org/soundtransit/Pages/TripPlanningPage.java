@@ -12,6 +12,9 @@ public class TripPlanningPage extends BasePage {
     @FindBy(id="trip_planner_search_results")
     WebElement tripPlannerSearchResults;
 
+    @FindBy(id="tripOverlaysRiderPanel1_trip_steps")
+    WebElement tripPlannerSteps;
+
     public TripPlanningPage(RemoteWebDriver driver) {
         super(driver);
     }
@@ -21,6 +24,10 @@ public class TripPlanningPage extends BasePage {
     }
 
     public void waitForTripPlan() {
-        ((new WebDriverWait(driver, 10))).until(ExpectedConditions.elementToBeClickable(tripPlannerSearchResults));
+        ((new WebDriverWait(driver, 10))).until(ExpectedConditions.elementToBeClickable(tripPlannerSteps));
+    }
+
+    public String getTripPlannerSteps() {
+        return tripPlannerSteps.getText();
     }
 }

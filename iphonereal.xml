@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="iphonereal" parallel="none">
+
+    <test name="IPHONESAFARIREAL Search">
+
+        <parameter name="device" value="IPHONESAFARIREAL" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.SearchTest" />
+
+            <class name="org.soundtransit.Tests.RealTimeArrivalsTest" />
+
+            <class name="org.soundtransit.Tests.SubscribeTest" />
+
+            <class name="org.soundtransit.Tests.TripPlanningTest" />
+
+        </classes>
+
+    </test>
+
+</suite>
