@@ -1,18 +1,16 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="android" parallel="none">
+<suite name="iphone" parallel="none">
 
-    <test name="ANDROIDCHROME all tests">
+    <test name="IPHONESAFARI Suite">
 
-        <parameter name="device" value="ANDROIDCHROME" />
+        <parameter name="device" value="IPHONESAFARI" />
 
         <classes>
 
             <class name="org.soundtransit.Tests.SearchTest" />
 
-
             <class name="org.soundtransit.Tests.RealTimeArrivalsTest" />
-
 
             <class name="org.soundtransit.Tests.SubscribeTest" />
 
