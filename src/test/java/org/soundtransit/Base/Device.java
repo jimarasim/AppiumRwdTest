@@ -5,7 +5,7 @@ public enum Device {
     IPHONESAFARI8("iOS","12.1","iPhone 8","safari","",""),
     IPHONESAFARIOLD("iOS","11.2","iPhone 7","safari","",""),
     IPHONESAFARIREAL("iOS","12.1","iPhone 6s","safari","","e4bd336879e62840d7750c0e8f989673c167bcfc"),
-    ANDROIDCHROME("Android","9.0","Android Emulator","Chrome","Pixel",""),
+    ANDROIDCHROME("Android","9.0","Android Emulator","Chrome","NexusOne",""),
     DESKTOPCHROME("","","","","","");
 
     public final String platformName;

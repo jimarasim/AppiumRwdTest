@@ -5,15 +5,12 @@ import org.soundtransit.Pages.CommonPage;
 import org.soundtransit.Pages.HomePage;
 import org.soundtransit.Pages.TripPlanningPage;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class TripPlanningTest extends BaseTest {
-    @Test
-    public void tripPlannerLocations() throws Exception {
-
-        String depart = "Fremont Troll";
-        String going = "Seattle Center Pavillion";
-
+    @Test(dataProvider = "DepartGoingProvider")
+    public void tripPlannerLocations(String depart, String going) throws Exception {
         HomePage homePage = new HomePage(driver);
         homePage.navigate();
 
@@ -31,5 +28,14 @@ public class TripPlanningTest extends BaseTest {
         tripPlannerPage.waitForTripPlan();
 
         Assert.assertTrue(tripPlannerPage.getTripPlannerSteps().contains("Metro Transit"));
+    }
+
+    @DataProvider(name="DepartGoingProvider")
+    public Object[][] getData(){
+        return new Object[][]{
+                {"Fremont Troll", "Seattle Center Pavillion"},
+                {"Carkeek Park", "Gas Works Park"},
+                {"Discovery Park", "Volunteer Park"}
+        };
     }
 }

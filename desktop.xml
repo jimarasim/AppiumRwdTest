@@ -38,4 +38,15 @@
 
     </test>
 
+    <test name="Desktop Chrome Trip Plan">
+
+        <parameter name="device" value="DESKTOPCHROME" />
+
+        <classes>
+
+            <class name="org.soundtransit.Tests.TripPlanningTest" />
+
+        </classes>
+
+    </test>
 </suite>
