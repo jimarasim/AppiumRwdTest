@@ -1,6 +1,5 @@
 package org.soundtransit.Pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -44,6 +43,15 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath="//button[@data-role='trip-planning']")
     WebElement tripPlanningPlanYourTripButton;
+
+    @FindBy(id="arrivalsRiderTab3")
+    WebElement routesAndSchedulesTab;
+
+    @FindBy(id="routeRiderRoute")
+    WebElement routeTextBox;
+
+    @FindBy(css="button[data-role='routes-schedules']")
+    WebElement routesButton;
 
     public final String url = "https://www.soundtransit.org";
 
@@ -105,13 +113,32 @@ public class HomePage extends BasePage {
     public TripPlanningPage clickPlanYourTripButton() {
         TripPlanningPage tripPlanningPage = new TripPlanningPage(driver);
 
-        ((new WebDriverWait(driver,10))).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.form__typeaheadOption")));
-
         tripPlanningPlanYourTripButton.click();
 
         tripPlanningPage.waitForPage();
 
         return tripPlanningPage;
+    }
+
+    //ROUTES AND SCHEDULES
+    public void selectRoutesAndSchedulesTab() {
+        routesAndSchedulesTab.click();
+        ((new WebDriverWait(driver,10))).until(ExpectedConditions.visibilityOf(routeTextBox));
+    }
+
+    public void enterRouteNumber(String route) {
+        routeTextBox.sendKeys(route);
+    }
+
+    public RoutesAndSchedulesPage clickFindScheduleButton() {
+        RoutesAndSchedulesPage routesAndSchedulesPage = new RoutesAndSchedulesPage(driver);
+
+        routesButton.click();
+
+        routesAndSchedulesPage.waitForPage();
+
+        return routesAndSchedulesPage;
+
     }
 
     //SUBSCRIBE

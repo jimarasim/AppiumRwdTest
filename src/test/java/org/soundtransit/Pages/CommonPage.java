@@ -100,6 +100,7 @@ public class CommonPage extends BasePage {
         String optionXpath = "//div[@class='option_name' and contains(text(),'"+optionText+"')]";
         WebElement option = (new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath(optionXpath)));
         option.click();
+        ((new WebDriverWait(driver,10))).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.form__typeaheadOption")));
     }
 
 }
