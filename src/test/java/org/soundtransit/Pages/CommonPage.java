@@ -3,8 +3,10 @@ package org.soundtransit.Pages;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.soundtransit.Base.BasePage;
@@ -101,6 +103,23 @@ public class CommonPage extends BasePage {
         WebElement option = (new WebDriverWait(driver,10)).until(ExpectedConditions.elementToBeClickable(By.xpath(optionXpath)));
         option.click();
         ((new WebDriverWait(driver,10))).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div.form__typeaheadOption")));
+    }
+
+    /**
+     * This function waits for the page to load
+     *
+     */
+    public void waitForPageToLoad(String urlContains) {
+        ExpectedCondition<Boolean> pageLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete")
+                                &&
+                                driver.getCurrentUrl().contains(urlContains);
+                    }
+                };
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(pageLoadCondition);
     }
 
 }
